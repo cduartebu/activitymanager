@@ -33,7 +33,10 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: PublishCodeCoverageResults@1
+- task: AzureRmWebAppDeployment@4
   inputs:
-    codeCoverageTool: 'JaCoCo'
-    summaryFileLocation: 'Coverage Result'
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'AzureConnection'
+    appType: 'webApp'
+    WebAppName: 'activitymanagersw'
+    packageForLinux: '$(build.artifactStagingDirectory)/*.zip'
