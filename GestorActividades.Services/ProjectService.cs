@@ -26,7 +26,7 @@ namespace GestorActividades.Services
                 var repository = unitOfWork.GetGenericRepository<Project>();
 
                 project.ProjectName = project.ProjectName.Trim();
-                project.Description = project.ProjectName.Trim();
+                project.Description = project.Description.Trim();
 
                 if (repository.GetAll().Any(x => x.ProjectName == project.ProjectName))
                 {
@@ -79,6 +79,7 @@ namespace GestorActividades.Services
                 if (response.Data == null)
                 {
                     response.StatusCode = StatusCode.Warning;
+                    return response;
                 }
 
                 var validation = ModelHelperValidator.ValidateComponentModel(project);
@@ -121,6 +122,7 @@ namespace GestorActividades.Services
                 if (project == null)
                 {
                     response.StatusCode = StatusCode.Error;
+                    return response;
                 }
 
                 repo.Delete(project);
