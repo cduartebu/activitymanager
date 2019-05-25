@@ -14,12 +14,6 @@ namespace GestorActividades.Data.Repositories
 
         protected DbSet<TEntity> myDbSet;        
 
-        /// <summary>
-        /// Gets or sets the command timeout.
-        /// </summary>
-        /// <value>
-        /// The command timeout.
-        /// </value>
         public int? CommandTimeout
         {
             get { return myDbContext.Database.CommandTimeout; }
