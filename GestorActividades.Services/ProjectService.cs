@@ -55,7 +55,7 @@ namespace GestorActividades.Services
             {
                 var repo = unitOfWork.GetGenericRepository<Project>();
 
-                response.Data = repo.Where(x => x.ProjectId == id).FirstOrDefault();
+                response.Data = repo.GetAll().FirstOrDefault(x => x.ProjectId == id);
 
                 if (response.Data == null)
                 {
@@ -74,7 +74,7 @@ namespace GestorActividades.Services
             {
                 var repo = unitOfWork.GetGenericRepository<Project>();
 
-                response.Data = repo.Where(x => x.ProjectId == project.ProjectId).FirstOrDefault();
+                response.Data = repo.GetAll().FirstOrDefault(x => x.ProjectId == project.ProjectId);
 
                 if (response.Data == null)
                 {
@@ -117,7 +117,7 @@ namespace GestorActividades.Services
             {
                 var repo = unitOfWork.GetGenericRepository<Project>();
 
-                var project = repo.Where(x => x.ProjectId == id).FirstOrDefault();
+                var project = repo.GetAll().FirstOrDefault(x => x.ProjectId == id);
 
                 if (project == null)
                 {
