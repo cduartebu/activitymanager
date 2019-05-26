@@ -52,8 +52,12 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeliverableTestService.cs" />
+    <Compile Include="UserTestService.cs" />
+    <Compile Include="TeamTestService.cs" />
     <Compile Include="ProjectTestService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ActivityTestService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
