@@ -32,11 +32,3 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'AzureConnection'
-    appType: 'webApp'
-    WebAppName: 'activitymanagersw'
-    packageForLinux: '$(build.artifactStagingDirectory)/*.zip'
