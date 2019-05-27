@@ -313,6 +313,8 @@ namespace GestorActividades.Services.Test
             myProjectRepository.Expect(x => x.Delete(Arg<Project>.Matches( z => z.ProjectId == 8 && z.ProjectName == "test_8" && z.Description == "Project description 8")))
                                 .Repeat.Once();
 
+            myProjectRepository.Expect(x => x.Save()).Return(1).Repeat.Once();
+
             var proyectService = new ProjectService
             {
                 UnitOfWorkFactory = myUnitOfWorkFactory
