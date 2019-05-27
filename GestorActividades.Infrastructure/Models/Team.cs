@@ -7,7 +7,7 @@ namespace GestorActividades.Infrastructure.Models
     {        
         public int TeamId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The TeamName field is required.")]
         [StringLength(200)]
         public string TeamName { get; set; }
 

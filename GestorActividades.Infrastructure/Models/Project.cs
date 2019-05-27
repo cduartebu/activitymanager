@@ -7,11 +7,11 @@ namespace GestorActividades.Infrastructure.Models
     {       
         public int ProjectId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The ProjectName field is required.")]
         [StringLength(100)]
         public string ProjectName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The Description field is required.")]
         [StringLength(800)]
         public string Description { get; set; }
 

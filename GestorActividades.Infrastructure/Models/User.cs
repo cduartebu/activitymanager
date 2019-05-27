@@ -7,19 +7,19 @@ namespace GestorActividades.Infrastructure.Models
     {
         public int UserId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The UserName field is required.")]
         [StringLength(100)]
         public string UserName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The FirstName field is required.")]
         [StringLength(200)]
         public string FirstName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The LastName field is required.")]
         [StringLength(200)]
         public string LastName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The EmailAddress field is required.")]
         [StringLength(300)]
         public string EmailAddress { get; set; }
 

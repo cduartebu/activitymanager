@@ -17,7 +17,7 @@ namespace GestorActividades.Services
             if (!validation.Data)
             {
                 response.StatusCode = StatusCode.Error;
-                response.StatusMessage = validation.StatusMessage;
+                response.StatusMessage = validation.StatusMessage.Trim();
                 return response;
             }
 
@@ -87,7 +87,7 @@ namespace GestorActividades.Services
                 if (!validation.Data)
                 {
                     response.StatusCode = StatusCode.Error;
-                    response.StatusMessage = validation.StatusMessage;
+                    response.StatusMessage = validation.StatusMessage.Trim();
                     return response;
                 }
 
@@ -126,6 +126,7 @@ namespace GestorActividades.Services
                 }
 
                 repo.Delete(project);
+                response.Data = true;
 
                 return response;
             }
