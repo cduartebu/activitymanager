@@ -7,7 +7,7 @@ namespace GestorActividades.Infrastructure.Models
     {
         public int DeliverableId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The Description field is required.")]
         [StringLength(500)]
         public string Description { get; set; }
 

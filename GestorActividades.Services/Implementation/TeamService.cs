@@ -17,20 +17,27 @@ namespace GestorActividades.Services
             if (!validation.Data)
             {
                 response.StatusCode = StatusCode.Error;
-                response.StatusMessage = validation.StatusMessage;
+                response.StatusMessage = validation.StatusMessage.Trim();
                 return response;
             }
 
             using (var unitOfWork = UnitOfWorkFactory.GetUnitOfWork())
             {
                 var repository = unitOfWork.GetGenericRepository<Team>();
-
-                Team.TeamId = Team.TeamId;
+                var repositoryProject= unitOfWork.GetGenericRepository<Project>();
+                                
                 Team.TeamName = Team.TeamName.Trim();
 
-                if (repository.GetAll().Any(x => x.TeamId == Team.TeamId))
+                if (repository.GetAll().Any(x => x.TeamName == Team.TeamName))
                 {
-                    response.StatusMessage = "The Team name already exits in the system.";
+                    response.StatusMessage = "The team name already exists in the system.";
+                    return response;
+                }
+
+                if (!repositoryProject.GetAll().Any(x => x.ProjectId == Team.ProjectId))
+                {
+                    response.StatusCode = StatusCode.Error;
+                    response.StatusMessage = "The project doesn't exist in the system.";
                     return response;
                 }
 
@@ -73,8 +80,10 @@ namespace GestorActividades.Services
             using (var unitOfWork = UnitOfWorkFactory.GetUnitOfWork())
             {
                 var repo = unitOfWork.GetGenericRepository<Team>();
+                var repositoryProject = unitOfWork.GetGenericRepository<Project>();
+                IQueryable<Team> teams = repo.GetAll();
 
-                response.Data = repo.GetAll().FirstOrDefault(x => x.TeamId == Team.TeamId);
+                response.Data = teams.FirstOrDefault(x => x.TeamId == Team.TeamId);
 
                 if (response.Data == null)
                 {
@@ -87,20 +96,28 @@ namespace GestorActividades.Services
                 if (!validation.Data)
                 {
                     response.StatusCode = StatusCode.Error;
-                    response.StatusMessage = validation.StatusMessage;
+                    response.StatusMessage = validation.StatusMessage.Trim();
                     return response;
                 }
 
-                if (repo.GetAll().Any(x => x.TeamName == Team.TeamName) && Team.TeamName != response.Data.TeamName)
+                if (teams.Any(x => x.TeamName == Team.TeamName) && Team.TeamName != response.Data.TeamName)
                 {
                     response.StatusCode = StatusCode.Error;
-                    response.StatusMessage = "The Team name already exits in the system.";
+                    response.StatusMessage = "The team name already exists in the system.";
+                    return response;
+                }
+
+                if (!repositoryProject.GetAll().Any(x => x.ProjectId == Team.ProjectId))
+                {
+                    response.StatusCode = StatusCode.Error;
+                    response.StatusMessage = "The project doesn't exist in the system.";
                     return response;
                 }
 
                 response.Data.TeamId = Team.TeamId;
                 response.Data.TeamName = Team.TeamName;
-                       
+                response.Data.ProjectId = Team.ProjectId;
+
 
                 repo.UpdateAndSave(response.Data);
 

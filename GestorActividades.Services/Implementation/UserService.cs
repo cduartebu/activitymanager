@@ -17,23 +17,26 @@ namespace GestorActividades.Services
             if (!validation.Data)
             {
                 response.StatusCode = StatusCode.Error;
-                response.StatusMessage = validation.StatusMessage;
+                response.StatusMessage = validation.StatusMessage.Trim();
                 return response;
             }
 
             using (var unitOfWork = UnitOfWorkFactory.GetUnitOfWork())
             {
                 var repository = unitOfWork.GetGenericRepository<User>();
-
-                User.UserId = User.UserId;
+               
+                User.UserName = User.UserName.Trim();
+                User.FirstName = User.FirstName.Trim();
+                User.LastName = User.LastName.Trim();
                 User.EmailAddress = User.EmailAddress.Trim();
 
-                if (repository.GetAll().Any(x => x.UserId == User.UserId))
+                if (repository.GetAll().Any(x => x.UserName == User.UserName))
                 {
-                    response.StatusMessage = "The User Email already exits in the system.";
+                    response.StatusMessage = "The UserName already exists in the system.";
                     return response;
                 }
 
+                
                 User.CreatedDt = DateTime.Now;
 
                 repository.InsertAndSave(User);
@@ -73,8 +76,10 @@ namespace GestorActividades.Services
             using (var unitOfWork = UnitOfWorkFactory.GetUnitOfWork())
             {
                 var repo = unitOfWork.GetGenericRepository<User>();
+                var repositoryTeam = unitOfWork.GetGenericRepository<Team>();
+                IQueryable<User> users = repo.GetAll();
 
-                response.Data = repo.GetAll().FirstOrDefault(x => x.UserId == User.UserId);
+                response.Data = users.FirstOrDefault(x => x.UserId == User.UserId);
 
                 if (response.Data == null)
                 {
@@ -87,21 +92,35 @@ namespace GestorActividades.Services
                 if (!validation.Data)
                 {
                     response.StatusCode = StatusCode.Error;
-                    response.StatusMessage = validation.StatusMessage;
+                    response.StatusMessage = validation.StatusMessage.Trim();
                     return response;
                 }
 
-                if (repo.GetAll().Any(x => x.UserId == User.UserId) && User.UserId != response.Data.UserId)
+                User.UserName = User.UserName.Trim();
+                User.FirstName = User.FirstName.Trim();
+                User.LastName = User.LastName.Trim();
+                User.EmailAddress = User.EmailAddress.Trim();
+
+                if (users.Any(x => x.UserName == User.UserName) && User.UserName != response.Data.UserName)
                 {
                     response.StatusCode = StatusCode.Error;
-                    response.StatusMessage = "The User Email already exits in the system.";
+                    response.StatusMessage = "The UserName already exists in the system.";
+                    return response;
+                }
+
+                if (User.TeamId != null && !repositoryTeam.GetAll().Any(x => x.TeamId == User.TeamId))
+                {
+                    response.StatusCode= StatusCode.Error;
+                    response.StatusMessage = "The Team doesn't exist in the system.";
                     return response;
                 }
 
                 response.Data.UserId = User.UserId;
+                response.Data.UserName = User.UserName;
+                response.Data.FirstName = User.FirstName;
+                response.Data.LastName = User.LastName;
                 response.Data.EmailAddress = User.EmailAddress;
-              
-               
+                response.Data.TeamId = User.TeamId;
 
                 repo.UpdateAndSave(response.Data);
 

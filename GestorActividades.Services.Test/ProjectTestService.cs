@@ -39,7 +39,7 @@ namespace GestorActividades.Services.Test
 
             //Asserts
             Assert.AreEqual(StatusCode.Error, result.StatusCode);
-            Assert.AreEqual("The Description field is required. ", result.StatusMessage);
+            Assert.AreEqual("The Description field is required.", result.StatusMessage);
         }
 
         [TestMethod]
@@ -55,7 +55,7 @@ namespace GestorActividades.Services.Test
 
             //Asserts
             Assert.AreEqual(StatusCode.Error, result.StatusCode);
-            Assert.AreEqual("The ProjectName field is required. ", result.StatusMessage);
+            Assert.AreEqual("The ProjectName field is required.", result.StatusMessage);
         }
 
         [TestMethod]
