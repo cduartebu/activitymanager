@@ -126,6 +126,7 @@ namespace GestorActividades.Services
                 }
 
                 repo.Delete(Deliverable);
+                repo.Save();
 
                 return response;
             }

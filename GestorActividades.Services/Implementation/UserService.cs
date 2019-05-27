@@ -145,6 +145,7 @@ namespace GestorActividades.Services
                 }
 
                 repo.Delete(User);
+                repo.Save();
 
                 return response;
             }

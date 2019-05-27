@@ -26,7 +26,5 @@ namespace GestorActividades.Infrastructure.Models
         public DateTime CreatedDt { get; set; }
 
         public int? TeamId { get; set; }
-
-        public virtual Team Team { get; set; }
     }
 }

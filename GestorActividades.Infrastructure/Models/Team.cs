@@ -13,9 +13,7 @@ namespace GestorActividades.Infrastructure.Models
 
         public DateTime CreatedDt { get; set; }
 
-        public int ProjectId { get; set; }
-        
-        public virtual Project Project { get; set; }
+        public int ProjectId { get; set; }       
         
     }
 }
