@@ -24,17 +24,17 @@ namespace GestorActividades.Services
             using (var unitOfWork = UnitOfWorkFactory.GetUnitOfWork())
             {
                 var repository = unitOfWork.GetGenericRepository<Activity>();
+                var repositoryTeam = unitOfWork.GetGenericRepository<Team>();
 
-                Activity.ActivityId = Activity.ActivityId;
-                Activity.Description = Activity.Description.Trim();
+                Activity.Description = Activity.Description.Trim();                
+                Activity.CreatedDt = DateTime.Now;
 
-                if (repository.GetAll().Any(x => x.ActivityId == Activity.ActivityId))
+                if (!repositoryTeam.GetAll().Any(x => x.TeamId == Activity.TeamId))
                 {
-                    response.StatusMessage = "The Activity name already exits in the system.";
+                    response.StatusCode = StatusCode.Error;
+                    response.StatusMessage = "The Team doesn't exist in the system.";
                     return response;
                 }
-
-                Activity.CreatedDt = DateTime.Now;
 
                 repository.InsertAndSave(Activity);
 
@@ -73,8 +73,11 @@ namespace GestorActividades.Services
             using (var unitOfWork = UnitOfWorkFactory.GetUnitOfWork())
             {
                 var repo = unitOfWork.GetGenericRepository<Activity>();
+                var repositoryTeam = unitOfWork.GetGenericRepository<Team>();
 
-                response.Data = repo.GetAll().FirstOrDefault(x => x.ActivityId == Activity.ActivityId);
+                IQueryable<Activity> activities = repo.GetAll();
+
+                response.Data = activities.FirstOrDefault(x => x.ActivityId == Activity.ActivityId);
 
                 if (response.Data == null)
                 {
@@ -91,17 +94,17 @@ namespace GestorActividades.Services
                     return response;
                 }
 
-                if (repo.GetAll().Any(x => x.ActivityId == Activity.ActivityId) && Activity.ActivityId != response.Data.ActivityId)
+                if (!repositoryTeam.GetAll().Any(x => x.TeamId == Activity.TeamId))
                 {
                     response.StatusCode = StatusCode.Error;
-                    response.StatusMessage = "The Activity name already exits in the system.";
+                    response.StatusMessage = "The team doesn't exist in the system.";
                     return response;
                 }
 
                 response.Data.ActivityId = Activity.ActivityId;
                 response.Data.Description = Activity.Description;
                 response.Data.StartDate = Activity.StartDate;
-               
+                response.Data.DueDate = Activity.DueDate;
 
                 repo.UpdateAndSave(response.Data);
 
