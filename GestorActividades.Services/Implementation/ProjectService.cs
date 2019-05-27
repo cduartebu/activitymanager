@@ -126,6 +126,7 @@ namespace GestorActividades.Services
                 }
 
                 repo.Delete(project);
+                response.Data = true;
 
                 return response;
             }
