@@ -39,7 +39,6 @@ namespace GestorActividades.Services
 
                 repository.InsertAndSave(Activity);
 
-
                 response.StatusCode = StatusCode.Successful;
                 response.Data = Activity;
             }

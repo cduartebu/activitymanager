@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row" *ngIf="!error">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          <h5 class="card-title text-center">Login</h5>
+          <div class="alert alert-danger" *ngIf="loginError">
+            {{loginError}}
+          </div>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-signin">
+              <div class="form-label-group">
+                  <input id = "inputEmail" type="text" formControlName="username" class="form-control" placeholder="Username" required>
+                  <label for="inputEmail">Username</label>
+                  <div *ngIf="username.invalid && (username.dirty || username.touched)" class="text-danger">
+                    <div *ngIf="username.errors">
+                      Username is required.
+                    </div>
+                  </div>
+              </div>
+              <div class="form-label-group">
+                  <input it="inputPass" type="password" formControlName="password" class="form-control" placeholder="Password" required>
+                  <label for="inputPass">Password</label>
+                  <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+                    <div *ngIf="password.errors">
+                      Password is required.
+                    </div>
+                  </div>
+              </div>
+              <div class="form-label-group">
+                  <button type="submit" [disabled]="!loginForm.valid" class="btn btn-lg btn-primary btn-block text-uppercase">Log In</button>
+              </div>
+          </form>          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="service-error" *ngIf="error">
+  <h1>{{error.errorTitle}}</h1>
+  <h3>{{error.errorDesc}}</h3>
+</div>

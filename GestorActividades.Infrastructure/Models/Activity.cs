@@ -15,6 +15,8 @@ namespace GestorActividades.Infrastructure.Models
 
         public DateTime DueDate { get; set; }
 
+        public byte Status { get; set; }
+
         public DateTime CreatedDt { get; set; }
 
         public int TeamId { get; set; }
