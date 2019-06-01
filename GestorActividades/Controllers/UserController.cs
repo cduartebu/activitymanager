@@ -1,10 +1,12 @@
 ﻿using GestorActividades.Infrastructure.Models;
 using GestorActividades.Services;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace GestorActividades.Controllers
 {
+    [Authorize]
     public class UserController : ApiController
     {
         private IUserService myUserService;
@@ -21,10 +23,15 @@ namespace GestorActividades.Controllers
         {
             var result = UserService.GetUserById(id);
 
-            if (result.StatusCode != Infrastructure.StatusCode.Successful)
-            {
-                return Request.CreateResponse(System.Net.HttpStatusCode.NotFound);
-            }
+            return Request.CreateResponse(System.Net.HttpStatusCode.OK, result);
+        }
+
+        // GET: api/User
+        [HttpGet]
+        public HttpResponseMessage Get()
+        {
+            var result = UserService.GetUsers(HttpContext.Current.User.Identity.Name);            
+            
 
             return Request.CreateResponse(System.Net.HttpStatusCode.OK, result);
         }
@@ -39,11 +46,6 @@ namespace GestorActividades.Controllers
             }
 
             var result = UserService.AddUser(value);
-
-            if (result.StatusCode != Infrastructure.StatusCode.Successful)
-            {
-                return Request.CreateResponse(System.Net.HttpStatusCode.BadRequest, result);
-            }
 
             return Request.CreateResponse(System.Net.HttpStatusCode.OK, result);
         }

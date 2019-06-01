@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.Owin.Cors;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace GestorActividades
 {
@@ -10,6 +9,8 @@ namespace GestorActividades
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            //EnableCorsAttribute cors = new EnableCorsAttribute("http://localhost:4200", "*", "GET");
+            //config.EnableCors(CorsOptions.AllowAll);
 
             // Web API routes
             config.MapHttpAttributeRoutes();

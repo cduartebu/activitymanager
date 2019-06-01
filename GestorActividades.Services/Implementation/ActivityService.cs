@@ -2,6 +2,7 @@
 using GestorActividades.Infrastructure.Models;
 using GestorActividades.Services.Validation;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace GestorActividades.Services
@@ -61,6 +62,26 @@ namespace GestorActividades.Services
                 {
                     response.StatusCode = StatusCode.Error;
                 }
+
+                return response;
+            }
+        }
+
+        public ResponseDto<ICollection<Activity>> GetActivityByUserName(string userName)
+        {
+            var response = new ResponseDto<ICollection<Activity>>(StatusCode.Successful);
+
+            using (var unitOfWork = UnitOfWorkFactory.GetUnitOfWork())
+            {
+                var repo = unitOfWork.GetGenericRepository<User>();
+
+                var activity = from user in repo.GetAll()                               
+                               join acty in repo.GetRepository<Activity>() on user.TeamId equals acty.TeamId
+                               where user.UserName == userName
+                               orderby acty.DueDate
+                               select acty;
+
+                response.Data = activity.ToList();
 
                 return response;
             }

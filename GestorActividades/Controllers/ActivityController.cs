@@ -1,10 +1,12 @@
 ﻿using GestorActividades.Infrastructure.Models;
 using GestorActividades.Services;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace GestorActividades.Controllers
 {
+    [Authorize]
     public class ActivityController : ApiController
     {
         private IActivityService myActivityService;
@@ -25,6 +27,15 @@ namespace GestorActividades.Controllers
             {
                 return Request.CreateResponse(System.Net.HttpStatusCode.NotFound);
             }
+
+            return Request.CreateResponse(System.Net.HttpStatusCode.OK, result);
+        }
+
+        // GET: api/Activity
+        [HttpGet]
+        public HttpResponseMessage Get()
+        {
+            var result = ActivityService.GetActivityByUserName(HttpContext.Current.User.Identity.Name);            
 
             return Request.CreateResponse(System.Net.HttpStatusCode.OK, result);
         }

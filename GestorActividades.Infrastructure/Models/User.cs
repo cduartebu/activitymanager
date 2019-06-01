@@ -23,6 +23,10 @@ namespace GestorActividades.Infrastructure.Models
         [StringLength(300)]
         public string EmailAddress { get; set; }
 
+        [Required(ErrorMessage = "The Password field is required.")]
+        [StringLength(250)]
+        public string Password { get; set; }
+
         public DateTime CreatedDt { get; set; }
 
         public int? TeamId { get; set; }

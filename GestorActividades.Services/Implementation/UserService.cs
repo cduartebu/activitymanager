@@ -1,7 +1,9 @@
 ﻿using GestorActividades.Infrastructure;
 using GestorActividades.Infrastructure.Models;
+using GestorActividades.Services.Implementation;
 using GestorActividades.Services.Validation;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace GestorActividades.Services
@@ -24,19 +26,25 @@ namespace GestorActividades.Services
             using (var unitOfWork = UnitOfWorkFactory.GetUnitOfWork())
             {
                 var repository = unitOfWork.GetGenericRepository<User>();
-               
+
                 User.UserName = User.UserName.Trim();
                 User.FirstName = User.FirstName.Trim();
                 User.LastName = User.LastName.Trim();
                 User.EmailAddress = User.EmailAddress.Trim();
-
+                User.Password = AuthService.CreateHash(User.Password);
                 if (repository.GetAll().Any(x => x.UserName == User.UserName))
                 {
                     response.StatusMessage = "The UserName already exists in the system.";
                     return response;
                 }
 
-                
+                var team = new TeamService().AddTeam(new Team
+                {
+                    ProjectId = 2,
+                    TeamName = User.UserName
+                });
+
+                User.TeamId = team.Data.TeamId;
                 User.CreatedDt = DateTime.Now;
 
                 repository.InsertAndSave(User);
@@ -64,6 +72,32 @@ namespace GestorActividades.Services
                 {
                     response.StatusCode = StatusCode.Error;
                 }
+                else
+                {
+                    response.Data.Password = string.Empty;
+                }
+
+                return response;
+            }
+        }
+
+        public ResponseDto<IEnumerable<User>> GetUsers(string username)
+        {
+            var response = new ResponseDto<IEnumerable<User>>(StatusCode.Successful);
+
+            using (var unitOfWork = UnitOfWorkFactory.GetUnitOfWork())
+            {
+                var repo = unitOfWork.GetGenericRepository<User>();
+
+                response.Data = repo.Where(x => x.UserName != username).ToList().Select(x => new User
+                {
+                    UserId = x.UserId,
+                    UserName = x.UserName,
+                    FirstName = x.FirstName,
+                    LastName = x.LastName,
+                    EmailAddress = x.EmailAddress,
+                    CreatedDt = x.CreatedDt
+                });
 
                 return response;
             }
@@ -110,7 +144,7 @@ namespace GestorActividades.Services
 
                 if (User.TeamId != null && !repositoryTeam.GetAll().Any(x => x.TeamId == User.TeamId))
                 {
-                    response.StatusCode= StatusCode.Error;
+                    response.StatusCode = StatusCode.Error;
                     response.StatusMessage = "The Team doesn't exist in the system.";
                     return response;
                 }

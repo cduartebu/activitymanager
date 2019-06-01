@@ -28,12 +28,6 @@ namespace GestorActividades.Services
                                 
                 Team.TeamName = Team.TeamName.Trim();
 
-                if (repository.GetAll().Any(x => x.TeamName == Team.TeamName))
-                {
-                    response.StatusMessage = "The team name already exists in the system.";
-                    return response;
-                }
-
                 if (!repositoryProject.GetAll().Any(x => x.ProjectId == Team.ProjectId))
                 {
                     response.StatusCode = StatusCode.Error;

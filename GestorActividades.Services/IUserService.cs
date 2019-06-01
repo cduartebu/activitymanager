@@ -1,5 +1,6 @@
 ﻿using GestorActividades.Infrastructure;
 using GestorActividades.Infrastructure.Models;
+using System.Collections.Generic;
 
 namespace GestorActividades.Services
 {
@@ -8,6 +9,8 @@ namespace GestorActividades.Services
         ResponseDto<User> AddUser(User User);
 
         ResponseDto<User> GetUserById(int id);
+
+        ResponseDto<IEnumerable<User>> GetUsers(string username);
 
         ResponseDto<User> UpdateUser(User User);
 
