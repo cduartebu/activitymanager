@@ -8,7 +8,7 @@ import { map, catchError } from 'rxjs/operators';
 })
 export class AuthService {
 
-  serverUrl = 'http://localhost:44333/';
+  serverUrl = 'https://activitymanager2.azurewebsites.net/';
   errorData: {};
 
   constructor(private http: HttpClient) { }

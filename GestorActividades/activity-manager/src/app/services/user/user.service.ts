@@ -9,7 +9,7 @@ import { ResponseDto } from 'src/app/httpResponse';
 })
 export class UserService {
 
-  url = 'http://localhost:44333/Api/User/';  
+  url = 'https://activitymanager2.azurewebsites.net/Api/User/';  
 
   constructor(private http: HttpClient) { }
 
