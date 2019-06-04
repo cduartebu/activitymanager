@@ -8,6 +8,8 @@ namespace GestorActividades.Services
     {
         ResponseDto<Activity> AddActivity(Activity Activity);
 
+        ResponseDto<Activity> AddActivityToUser(Activity Activity,string userName);
+
         ResponseDto<Activity> GetActivityById(int id);
 
         ResponseDto<ICollection<Activity>> GetActivityByUserName(string userName);

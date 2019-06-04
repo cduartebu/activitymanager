@@ -1,35 +1,86 @@
 <ng-template #content let-modal>
+  <form [formGroup]="activityForm" (ngSubmit)="saveActivity(activityForm.value)">
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">{{selectedActivity.Title}}</h4>
+      <h4 class="modal-title" id="modal-basic-title">{{selectedActivity.ActivityId === undefined ? 'Create a new Activity' : 'Edit the Activity'}}</h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
-      <form>
-        <div class="form-group">
-          <label for="dateOfBirth">Date of birth</label>
-          <div class="input-group">
-            <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-            </div>
+
+      <div class="form-group">
+        <label for="input-title">Title</label>
+        <input type="text" class="form-control" formControlName="Title" id="input-title" style="font-weight: bold"
+          placeholder="Enter title" value="{{selectedActivity.Title}}">
+      </div>
+
+      <div class="form-group">
+        <label for="input-description">Description</label>
+        <input type="text" class="form-control" formControlName="Description" id="input-description"
+          placeholder="Enter description" value="{{selectedActivity.Description}}">
+      </div>
+
+      <div class="form-group">
+        <label for="startDate">Start Date</label>
+        <div class="input-group">
+          <input id="startDate" class="form-control" placeholder="dd/mm/yyyy"
+            value="{{selectedActivity.StartDate.toString() | date: 'yyyy-MM-dd'}}" name="dps" ngbDatepicker
+            #dps="ngbDatepicker" formControlName="StartDate">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="dps.toggle()" type="button"></button>
           </div>
         </div>
-      </form>
+      </div>
+      <div class="form-group">
+        <label for="dueDate">Due Date</label>
+        <div class="input-group">
+          <input id="dueDate" class="form-control" placeholder="dd/mm/yyyy"
+            value="{{selectedActivity.DueDate.toString() | date: 'yyyy-MM-dd'}}" name="dpd" ngbDatepicker
+            #dpd="ngbDatepicker" formControlName="DueDate">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="dpd.toggle()" type="button"></button>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div><label for="state">State</label></div>
+        <div id="state" class="btn-group">
+          <button type="button" class="btn"
+            [ngClass]="{'btn-todo': selectedActivity.Status==1,'btn-none': selectedActivity.Status!=1 }"
+            (click)="toDoStatus()">To Do</button>
+          <button type="button" class="btn"
+            [ngClass]="{'btn-inprogress': selectedActivity.Status==2,'btn-none': selectedActivity.Status!=2 }"
+            (click)="inProgressStatus()">In Progress</button>
+          <button type="button" class="btn"
+            [ngClass]="{'btn-done': selectedActivity.Status==3,'btn-none': selectedActivity.Status!=3 }"
+            (click)="doneStatus()">Done</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+          {{errorMessage}}
+        </div>
+        <div *ngIf="message" class="alert alert-success" role="alert">
+          {{message}}
+        </div>
+      </div>
+
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+      <button type="submit" class="btn btn-outline-dark">Save</button>
     </div>
-  </ng-template>
+  </form>
+</ng-template>
 
 <div *ngFor="let activity of activities" class="card text-center mb-3">
-    <div class="card-body">
-      <h5 class="card-title">{{activity.Title}}</h5>
-      <p class="card-text">{{activity.Description}}</p>
-      <button class="btn btn-primary" (click)="open(content, activity)">Edit</button>
-    </div>
-    <div class="card-footer text-muted">
-      Due at: {{activity.DueDate | date: 'dd/MM/yyyy'}}
-    </div>
+  <div class="card-body">
+    <h5 class="card-title">{{activity.Title}}</h5>
+    <p class="card-text">{{activity.Description}}</p>
+    <button class="btn btn-primary" (click)="open(content, activity)">Edit</button>
+  </div>
+  <div class="card-footer" [ngClass]="{'expired text-white': activity.isDue,'text-muted': !activity.isDue }">
+    Due at: {{activity.DueDate | date: 'dd/MM/yyyy'}}
+  </div>
 </div>
+
+<a *ngIf="!activities" class="btn btn-primary btn-lg" (click)="create(content)" role="button">Add more</a>

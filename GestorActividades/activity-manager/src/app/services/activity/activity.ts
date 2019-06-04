@@ -6,4 +6,7 @@ export class Activity {
   DueDate: Date;
   CreatedDt: Date;    
   Status: number;
+  TeamId: number;
+  isDue: boolean;
+  
 }

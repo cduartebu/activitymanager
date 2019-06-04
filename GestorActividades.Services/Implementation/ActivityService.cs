@@ -29,6 +29,8 @@ namespace GestorActividades.Services
 
                 Activity.Description = Activity.Description.Trim();                
                 Activity.CreatedDt = DateTime.Now;
+                Activity.StartDate = Activity.StartDate.ToLocalTime();
+                Activity.DueDate = Activity.DueDate.ToLocalTime();
 
                 if (!repositoryTeam.GetAll().Any(x => x.TeamId == Activity.TeamId))
                 {
@@ -123,8 +125,10 @@ namespace GestorActividades.Services
 
                 response.Data.ActivityId = Activity.ActivityId;
                 response.Data.Description = Activity.Description;
-                response.Data.StartDate = Activity.StartDate;
-                response.Data.DueDate = Activity.DueDate;
+                response.Data.StartDate = Activity.StartDate.ToLocalTime();
+                response.Data.DueDate = Activity.DueDate.ToLocalTime();
+                response.Data.TeamId= Activity.TeamId;
+                response.Data.Status = Activity.Status;
 
                 repo.UpdateAndSave(response.Data);
 
@@ -153,6 +157,26 @@ namespace GestorActividades.Services
 
                 return response;
             }
+        }
+
+        public ResponseDto<Activity> AddActivityToUser(Activity Activity, string userName)
+        {
+            int teamId = 0;
+
+            using (var unitOfWork = UnitOfWorkFactory.GetUnitOfWork())
+            {
+                var repo = unitOfWork.GetGenericRepository<User>();
+
+                var team = from user in repo.GetAll()
+                           where user.UserName == userName
+                           select user.TeamId;
+            
+                teamId = team.SingleOrDefault().Value;
+                
+            }
+            Activity.TeamId = teamId;
+            return AddActivity(Activity);
+
         }
     }
 }

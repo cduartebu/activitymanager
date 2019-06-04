@@ -49,8 +49,8 @@ namespace GestorActividades.Controllers
                 return Request.CreateResponse(System.Net.HttpStatusCode.BadRequest);
             }
 
-            var result = ActivityService.AddActivity(value);
-
+            var result = value.TeamId==0?ActivityService.AddActivityToUser(value, HttpContext.Current.User.Identity.Name): ActivityService.AddActivity(value);
+           
             if (result.StatusCode != Infrastructure.StatusCode.Successful)
             {
                 return Request.CreateResponse(System.Net.HttpStatusCode.BadRequest, result);

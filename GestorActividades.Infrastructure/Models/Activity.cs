@@ -7,6 +7,10 @@ namespace GestorActividades.Infrastructure.Models
     {
         public int ActivityId { get; set; }
 
+        [Required(ErrorMessage = "The Title field is required.")]
+        [StringLength(500)]
+        public string Title { get; set; }
+
         [Required(ErrorMessage = "The Description field is required.")]
         [StringLength(500)]
         public string Description { get; set; }
