@@ -14,6 +14,8 @@ import { UsersComponent } from './users/users.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { httpInterceptorProviders } from './http-interceptors/index';
+import { LoaderComponent } from './loader/loader.component';
+import { LoaderService } from './loader.service';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { httpInterceptorProviders } from './http-interceptors/index';
     ActivityComponent,
     NavbarComponent,
     UsersComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +36,7 @@ import { httpInterceptorProviders } from './http-interceptors/index';
     NgbModule
   ],
   providers: [
+    LoaderService,
     httpInterceptorProviders],
     bootstrap: [AppComponent]
 })
