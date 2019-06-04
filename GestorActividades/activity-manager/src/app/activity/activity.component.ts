@@ -149,6 +149,20 @@ export class ActivityComponent implements OnInit {
     this.selectedActivity.Status = 3;
   }
 
+  deleteActivity(activityId: number) {  
+    if (confirm("Are you sure you want to delete this Activity?")) {
+      this.activityService.deleteActivity(activityId).subscribe(  
+          (response) => {  
+            if (response.StatusCode == 1) {
+              this.dataSaved = true;  
+              this.message = "Deleted Successfully";
+              this.modalService.dismissAll();
+              this.dashboard.getActivities();
+            }                
+          });  
+    }  
+  }
+
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
