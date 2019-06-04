@@ -32,4 +32,9 @@ export class ActivityService {
   {
     return this.http.post<ResponseDto<Activity>>(this.url, activity);
   }
+
+  deleteActivity(activityId:number) : Observable<ResponseDto<Activity>>
+  {
+    return this.http.delete<ResponseDto<Activity>>(this.url+ activityId);
+  }
 }
