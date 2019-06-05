@@ -53,7 +53,7 @@ Tabla de resumen de más métricas del código por componentes.
 
 ### Visual Studio - métricas
 
-Otras métricas adicionales que muestran los indices de complejidad ciclomática y acoplamiento.
+Otras métricas adicionales que muestran los índices de complejidad ciclomática y acoplamiento.
 
 ![](Images/SonarQube/code-metrics.png)
 
@@ -81,7 +81,7 @@ Después de la ejecución de las pruebas unitarias los resultados son publicados
 
 #### Releases
 
-Para incluir el proceso de despligue continuo y automático, definimos un pipeline para tomar el último build de master y desplegarlo como un servicio en Azure, a continuación, la definición del pipeline.
+Para incluir el proceso de despliegue continuo y automático, definimos un pipeline para tomar el último build de master y desplegarlo como un servicio en Azure, a continuación, la definición del pipeline.
 
 ![](Images/Azure-PipeLine/cd-pipeline-definition.png)
 
@@ -104,4 +104,4 @@ Con Azure DevOps definimos una prueba de carga usando el servicio de consulta de
 * **Carlos Avella** 
 * **Carlos Duarte** 
 * **Christian Rojas** 
-* **Edgar Vazques** 
+* **Edgar Vásquez** 
