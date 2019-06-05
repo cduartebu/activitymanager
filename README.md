@@ -59,13 +59,35 @@ Otras métricas adicionales que muestran los indices de complejidad ciclomática
 
 ## Azure DevOps
 
+Usamos Azure DevOps como herramienta principal para el desarrollo del proyecto, puesto que soporta el manejo de épicas, historias de usuario, backlog items, dashboards, sprints, plan de pruebas y todo el soporte para DevOps.
+
 ### Board 
 
 ### Pipelines
+Se definieron dos Pipelines uno para CI y para CD. 
 
 #### Builds
+Para el desarrollo del CI, se ha definió un build con un trigger sobre la rama master.
+![](Images/Azure-PipeLine/pipeline.png)
+
+Cómo se muestra en la definición del build, se recupera la última versión del branch, luego se restauran los Nuget packages, se compila y se genera un zip de publicación en modo 'Release' seguido de la ejecución de pruebas unitarias y por último se almacenan los artefactos generados del build.
+
+![](Images/Azure-PipeLine/pipeline-definition.png)
+
+Después de la ejecución de las pruebas unitarias los resultados son publicados en cada build.
+
+![](Images/Azure-PipeLine/pipeline-master.png)
+![](Images/Azure-PipeLine/pipeline-unittest.png)
 
 #### Releases
+
+Para incluir el proceso de despligue continuo y automático, definimos un pipeline para tomar el último build de master y desplegarlo como un servicio en Azure, a continuación, la definición del pipeline.
+
+![](Images/Azure-PipeLine/cd-pipeline-definition.png)
+
+Los últimos despliegues realizados.
+
+![](Images/Azure-PipeLine/cd-pipeline.png)
 
 ### Test Plans
 
