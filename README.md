@@ -94,3 +94,14 @@ Los últimos despliegues realizados.
 #### Test Plan
 
 #### Load Test
+
+Con Azure DevOps definimos una prueba de carga usando el servicio de consulta de proyectos, para esta prueba se usaron 25 usuarios, 2625 http requests en 2min y los resultados se presentan en la siguiente gráfica.
+
+![](Images/LoadTest/loadtest.png)
+
+## Authors
+
+* **Carlos Avella** 
+* **Carlos Duarte** 
+* **Christian Rojas** 
+* **Edgar Vazques** 
