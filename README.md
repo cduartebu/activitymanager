@@ -73,7 +73,9 @@ Para el desarrollo del proyecto se necesitará 2 personas expertas que están ev
 
 | Prioridad  | Como | Necesito | Para | Criterios de aceptación |
 | ---------- | ------------- | ------------- | ------------- |------------- |
-| 1  | Crear CRUD para equipos  |  Información de los equipos  | Registrar y  almacenar la información y de los equipos | 1. Registrar información de os equipos 2. Asignar actividades del equipo 3. Visualización los equipos  |
+| 1  | Crear CRUD para equipos  |  Información de los equipos  | Registrar y  almacenar la información y de los equipos | 1. Registrar información de os equipos 
+2. Asignar actividades del equipo 
+3. Visualización los equipos  |
 
 **Sprint 2 – Crear CRUD para proyectos**
 
