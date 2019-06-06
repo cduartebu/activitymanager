@@ -73,9 +73,34 @@ Para el desarrollo del proyecto se necesitará 2 personas expertas que están ev
 
 | Prioridad  | Como | Necesito | Para | Criterios de aceptación |
 | ---------- | ------------- | ------------- | ------------- |------------- |
-| 1  | Crear CRUD para equipos  |  Información de los equipos  | Registrar y  almacenar la información y de los equipos | 1. Registrar información de os equipos 
-2. Asignar actividades del equipo 
-3. Visualización los equipos  |
+| 1  | Crear CRUD para equipos  |  Información de los equipos  | Registrar y  almacenar la información y de los equipos | 1. Registrar información de os equipos 2. Asignar actividades del equipo 3. Visualización los equipos  |
+
+<table>
+    <thead>
+        <tr>
+            <th>Layer 1</th>
+            <th>Layer 2</th>
+            <th>Layer 3</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan=4>L1 Name</td>
+            <td rowspan=2>L2 Name A</td>
+            <td>L3 Name A</td>
+        </tr>
+        <tr>
+            <td>L3 Name B</td>
+        </tr>
+        <tr>
+            <td rowspan=2>L2 Name B</td>
+            <td>L3 Name C</td>
+        </tr>
+        <tr>
+            <td>L3 Name D</td>
+        </tr>
+    </tbody>
+</table>
 
 **Sprint 2 – Crear CRUD para proyectos**
 
