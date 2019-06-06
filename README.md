@@ -96,7 +96,7 @@ Para el desarrollo del proyecto se necesitará 2 personas expertas que están ev
             <td>3. Visualización de los proyectos registrados</td>
         </tr>  
 	    <tr>            
-            <td>4. Eliminación de un integrante </td>
+            <td>4. Eliminación de un proyecto </td>
         </tr>  
     </tbody>
 </table>
@@ -128,7 +128,7 @@ Para el desarrollo del proyecto se necesitará 2 personas expertas que están ev
             <td>3. Visualización los equipos</td>
         </tr>
 	    <tr>            
-            <td>4. Eliminación de un integrante </td>
+            <td>4. Eliminación de un equipo </td>
         </tr>  
     </tbody>
 </table>
@@ -161,7 +161,7 @@ Para el desarrollo del proyecto se necesitará 2 personas expertas que están ev
             <td>3. Visualización las actividades a un proyectos </td>
         </tr>    
 	    <tr>            
-            <td>4. Eliminación de un integrante </td>
+            <td>4. Eliminación de una actividad </td>
         </tr>  
     </tbody>
 </table>
@@ -255,6 +255,10 @@ Usamos Azure DevOps como herramienta principal para el desarrollo del proyecto, 
 
 ### Board 
 
+Se ingresan los sprints y las tareas derivadas del backlog, con el fin de llevar el seguimiento y las pruebas manuales que se deben ejecutar.
+
+![](Images/Azure-PipeLine/board.png)
+
 ### Pipelines
 Se definieron dos Pipelines uno para CI y para CD. 
 
@@ -284,6 +288,18 @@ Los últimos despliegues realizados.
 ### Test Plans
 
 #### Test Plan
+
+Con azure DevOps se establecen cuales deben ser las pruebas manuales a ejecutar.
+
+* Pruebas manuales 
+
+![](Images/Azure-PipeLine/manualtests.png)
+
+Estas pruebas se crean en una herramienta como POSTMAN y finalmente se automatiza su ejecución con NEWMAN para así dar aceptación al plan de pruebas.
+
+* Pruebas de aceptación
+
+![](Images/Azure-PipeLine/newman.png)
 
 #### Load Test
 
