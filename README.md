@@ -69,11 +69,7 @@ Para el desarrollo del proyecto se necesitará 2 personas expertas que están ev
 
 ### HU: Funcionalidad base de historia de usuario. 
 
-**Sprint 1 – Crear CRUD para equipos**
-
-| Prioridad  | Como | Necesito | Para | Criterios de aceptación |
-| ---------- | ------------- | ------------- | ------------- |------------- |
-| 1  | Crear CRUD para equipos  |  Información de los equipos  | Registrar y  almacenar la información y de los equipos | 1. Registrar información de os equipos 2. Asignar actividades del equipo 3. Visualización los equipos  |
+**Sprint 1 – Crear CRUD para proyectos**
 
 <table>
     <thead>
@@ -87,42 +83,120 @@ Para el desarrollo del proyecto se necesitará 2 personas expertas que están ev
     </thead>
     <tbody>
         <tr>
-            <td rowspan=3>1</td>
-            <td rowspan=3>Crear CRUD para equipos</td>
-	    <td rowspan=3>Información de los equipos </td>
-		<td rowspan=3>Registrar y  almacenar la información y de los equipos </td>
-            <td>1. Registrar información de os equipos</td>
+            <td rowspan=4>1</td>
+            <td rowspan=4>Crear CRUD para proyectos</td>
+	    <td rowspan=4>Información de los proyectos </td>
+		<td rowspan=4>Registrar y almacenar la información de los proyectos </td>
+            <td>1. Registrar información del proyectos</td>
+        </tr>
+        <tr>
+            <td>2. Asociar equipos al proyecto</td>
+        </tr>
+        <tr>            
+            <td>3. Visualización de los proyectos registrados</td>
+        </tr>  
+	    <tr>            
+            <td>4. Eliminación de un integrante </td>
+        </tr>  
+    </tbody>
+</table>
+
+**Sprint 2 – Crear CRUD para equipos**
+
+<table>
+    <thead>
+        <tr>
+            <th>Prioridad</th>
+            <th>Como</th>
+            <th>Necesito</th>
+		<th>Para</th>
+		<th>Criterios de aceptación</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan=4>1</td>
+            <td rowspan=4>Crear CRUD para equipos</td>
+	    <td rowspan=4>Información de los equipos </td>
+		<td rowspan=4>Registrar y  almacenar la información y de los equipos </td>
+            <td>1. Registrar información de los equipos</td>
         </tr>
         <tr>
             <td>2. Asignar actividades del equipo</td>
         </tr>
         <tr>            
             <td>3. Visualización los equipos</td>
-        </tr>       
+        </tr>
+	    <tr>            
+            <td>4. Eliminación de un integrante </td>
+        </tr>  
     </tbody>
 </table>
 
-**Sprint 2 – Crear CRUD para proyectos**
-
-Prioridad	Como	Necesito	Para	Criterios de aceptación
-1	Crear CRUD para proyectos	Información de los proyectos  	Registrar y almacenar la información de los proyectos 	1. Registrar información del proyectos
-				2. Asociar equipos al proyecto 
-				2. Visualización de los proyectos registrados
 				
 **Sprint 3 – Crear CRUD para actividades**
 
-Prioridad	Como	Necesito	Para	Criterios de aceptación
-1	Crear CRUD para actividades	Información de actividades de los proyectos 	Registrar y  almacenar la información y asociarla a los proyectos 	1. Registrar información de la actividad
-				2. Asociar a un equipo la actividad
-				3. Visualización las actividades a un proyectos 
-
+<table>
+    <thead>
+        <tr>
+            <th>Prioridad</th>
+            <th>Como</th>
+            <th>Necesito</th>
+		<th>Para</th>
+		<th>Criterios de aceptación</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan=4>1</td>
+            <td rowspan=4>Crear CRUD para actividades</td>
+	    <td rowspan=4>Información de  actividades de los proyectos </td>
+		<td rowspan=4>Registrar y  almacenar la información y asociarla a la actividad </td>
+            <td>1. Registrar información de la actividad</td>
+        </tr>
+        <tr>
+            <td>2. Asociar a un equipo la actividad</td>
+        </tr>
+        <tr>            
+            <td>3. Visualización las actividades a un proyectos </td>
+        </tr>    
+	    <tr>            
+            <td>4. Eliminación de un integrante </td>
+        </tr>  
+    </tbody>
+</table>
 
 **Sprint 4 – Crear CRUD para integrantes**
 
-Prioridad	Como	Necesito	Para	Criterios de aceptación
-1	Crear CRUD para integrantes	Información de los integrantes 	Registrar y  almacenar la información de los integrantes 	1. Registrar información de la integrantes
-				2. Asociar los integrantes de los equipos
-				3. Visualización las integrantes
+<table>
+    <thead>
+        <tr>
+            <th>Prioridad</th>
+            <th>Como</th>
+            <th>Necesito</th>
+		<th>Para</th>
+		<th>Criterios de aceptación</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan=4>1</td>
+            <td rowspan=4>Crear CRUD para integrantes</td>
+	    <td rowspan=4>Información de integrantes de los equipos </td>
+		<td rowspan=4>Registrar y  almacenar la información de los integrantes </td>
+            <td>1. Registrar información de los integrantes</td>
+        </tr>
+        <tr>
+            <td>2. Asociar a un integrante al equipo</td>
+        </tr>
+        <tr>            
+            <td>3. Visualización de los integrantes </td>
+        </tr>  
+	<tr>            
+            <td>4. Eliminación de un integrante </td>
+        </tr>    
+    </tbody>
+</table>
 
 ## Unit Test
 
