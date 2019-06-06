@@ -298,12 +298,20 @@ Con azure DevOps se establecen cuales deben ser las pruebas manuales a ejecutar 
 
 ![](Images/Azure-PipeLine/manualtests.png)
 
+En cada una de las pruebas se define caules son los pasos que se deben hacer y cuál es el resultado esperado.
+
+![](Images/Azure-PipeLine/manualtestsample.png)
 
 * Pruebas de aceptación
 
 Se genero adicionalmente el plan de pruebas en una herramienta como **POSTMAN** y finalmente se automatiza su ejecución con **NEWMAN** para así dar aceptación a cada funcionalidad.
 
-![](Images/Azure-PipeLine/newman.png)
+![](Images/Azure-PipeLine/postman.png)
+
+**Ejecución automática**
+
+![](Images/Azure-PipeLine/newman1.png)
+![](Images/Azure-PipeLine/newman2.png)
 
 #### Load Test
 
