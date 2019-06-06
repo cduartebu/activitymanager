@@ -4,7 +4,105 @@
 
 ## Metodología
 
+La metodología escogida para la ejecución del proyecto fue SCRUM, ya que este permite aplicar procesos donde se aplican de manera regular un conjunto de buenas prácticas para trabajar colaborativamente, en equipo, y obtener el mejor resultado posible de un proyecto. 
+
+En Scrum se realizan entregas parciales y regulares del producto final, priorizadas por el beneficio que aportan al receptor del proyecto. Por ello, Scrum está especialmente indicado para proyectos como este, donde el entorno es complejo, donde se necesita obtener resultados pronto, donde los requisitos son cambiantes o poco definidos, donde la innovación, la competitividad, la flexibilidad y la productividad son fundamentales.
+
+Aunque para este ejercicio sólo se tuvieron en cuenta 4 funcionalidaes, la metodología esta en la capacidad de adoptar nuevos requeriemientos y nuevas entregas del mismo.
+
 ## Herramienta para SCRUM como metodología ágil
+
+Como un acercamiento inicial a la ejecución del proyecto con la metodología SRUM, se plantan las siguientes fases las cuales permiten el correcto flujo de trabajo, logrando con éxito que el producto final cumpla con las expectativas inicialmente planteadas.
+
+### Identificación de actores
+
+El sistema esta incialmente planteado para ser usado por un actor que en este caso es el Cliente (Product Owner), el cual será el encargado de plantear los requerimientos y aceptar el producto final.
+
+### Identificación de requerimientos (Product Backlog Item)
+
+Desarrollar una funcionalidad que permita crear y modificar proyectos 
+Desarrollar una funcionalidad que permita crear y modificar actividades y asociarlas a un proyecto 
+Desarrollar una funcionalidad que permita crear y modificar equipo y asociarlas actividades
+Desarrollar una funcionalidad que permita crear y modificar integrantes y que se asociarlas actividades
+
+### Identificación de funcionalidades (Historias de usuarios)
+
+●	Crear CRUD para proyectos
+●	Crear CRUD para equipos 
+●	Crear CRUD para actividades
+●	Crear CRUD para integrantes
+
+### Identificación de funcionalidad base
+
+Crear información para proyectos, actividades, equipos  
+
+### Identificación de actividades para el desarrollo de la funcionalidad base
+
+●	Crear DB-Tablas
+●	Crear Clase Connection
+●	Crear Frontend   
+●	Crear estilo CSS
+●	Crear JavaScript
+●	Crear modelo
+●	Crear Api Rest
+●	Crear pruebas unitarias
+●	Ejecutar pruebas
+●	Pruebas QA
+
+### Número o cantidad de Sprint (Especificar duración de cada uno)
+
+Para el desarrollo del se tiene estimado 4 Sprint cada uno con duración de 7 días.  El primer sprint desarrollo de los proyectos, el segundo sprint actividades, tercer sprint equipos y el cuarto integrantes.
+
+### Cantidad de recursos en términos de perfiles (Equipo de trabajo)
+
+Desarrollador  
+
+Para el desarrollo del proyecto se necesitarán 4 desarrolladores estándar que tengan experiencia en el lenguaje de programación .NET.
+
+Desarrollador experto DBA
+
+Para el desarrollo del proyecto se necesitará 1 persona experta en base de datos.
+
+Desarrollador experto en QA
+
+Para el desarrollo del proyecto se necesitará 2 personas expertas que están evaluando constantemente la calidad del software y aseguren la calidad del mismo.
+
+### HU: Funcionalidad base de historia de usuario. 
+
+Release 1 – Crear CRUD para equipos
+
+| Prioridad  | Como | Necesito | Para | Criterios de aceptación |
+| ---------- | ------------- | ------------- | ------------- |------------- |
+| 1  | Crear CRUD para equipos  |  Información de los equipos  | Registrar y  almacenar la información y de los equipos | Información de 	       1. Registrar información de os equipos
+				2. Asignar actividades del equipo 
+				2. Visualización los equipos  |
+
+
+1	Crear CRUD para equipos	Información de los equipos 	Registrar y  almacenar la información y de los equipos 	1. Registrar información de os equipos
+				2. Asignar actividades del equipo 
+				2. Visualización los equipos
+
+
+Release 2 – Crear CRUD para proyectos
+Prioridad	Como	Necesito	Para	Criterios de aceptación
+1	Crear CRUD para proyectos	Información de los proyectos  	Registrar y almacenar la información de los proyectos 	1. Registrar información del proyectos
+				2. Asociar equipos al proyecto 
+				2. Visualización de los proyectos registrados
+Release 3 – Crear CRUD para actividades
+Prioridad	Como	Necesito	Para	Criterios de aceptación
+1	Crear CRUD para actividades	Información de actividades de los proyectos 	Registrar y  almacenar la información y asociarla a los proyectos 	1. Registrar información de la actividad
+				2. Asociar a un equipo la actividad
+				3. Visualización las actividades a un proyectos 
+
+
+Release 4 – Crear CRUD para integrantes
+Prioridad	Como	Necesito	Para	Criterios de aceptación
+1	Crear CRUD para integrantes	Información de los integrantes 	Registrar y  almacenar la información de los integrantes 	1. Registrar información de la integrantes
+				2. Asociar los integrantes de los equipos
+				3. Visualización las integrantes
+
+
+
 
 ## Unit Test
 
