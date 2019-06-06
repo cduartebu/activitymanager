@@ -204,7 +204,7 @@ Para la inclusión de pruebas de unidad se usó la extensión de Visual Studio -
 
 Para evitar hacer llamados a otras clases y/o componentes externos como la base de datos, se usó RhinoMocks para generar Mocks de las clases que se depende y poder inyectar el comportamiento simulado en tiempo de ejecución.
 
-![](Images/Azure-PipeLine/unittest1.png)  ![](Images/Azure-PipeLine/unittest2.png)
+![](Images/UnitTest/unittest1.png)  ![](Images/UnitTest/unittest2.png)
 
 ### TDD
 
