@@ -289,15 +289,21 @@ Los últimos despliegues realizados.
 
 #### Test Plan
 
-Con azure DevOps se establecen cuales deben ser las pruebas manuales a ejecutar.
-
 * Pruebas manuales 
+
+Con azure DevOps se establecen cuales deben ser las pruebas manuales a ejecutar.
 
 ![](Images/Azure-PipeLine/manualtests.png)
 
-Estas pruebas se crean en una herramienta como POSTMAN y finalmente se automatiza su ejecución con NEWMAN para así dar aceptación al plan de pruebas.
+* Pruebas unitarias (Visual Studio) 
+
+Así mismo se generaron pruebas unitarias que fueron el insumo prncipal para ejecutar el proyecto con la metodología **TDD**.
+
+![](Images/Azure-PipeLine/unittests.png)
 
 * Pruebas de aceptación
+
+Se genero adicionalmente el plan de pruebas en una herramienta como **POSTMAN** y finalmente se automatiza su ejecución con **NEWMAN** para así dar aceptación a cada funcionalidad.
 
 ![](Images/Azure-PipeLine/newman.png)
 
