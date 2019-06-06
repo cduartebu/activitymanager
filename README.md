@@ -294,7 +294,7 @@ Los últimos despliegues realizados.
 
 * Pruebas manuales 
 
-Con azure DevOps se establecen cuales deben ser las pruebas manuales a ejecutar.
+Con azure DevOps se establecen cuales deben ser las pruebas manuales a ejecutar dentro de cada uno de los Backlog.
 
 ![](Images/Azure-PipeLine/manualtests.png)
 
