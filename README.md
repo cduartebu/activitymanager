@@ -204,7 +204,7 @@ Para la inclusión de pruebas de unidad se usó la extensión de Visual Studio -
 
 Para evitar hacer llamados a otras clases y/o componentes externos como la base de datos, se usó RhinoMocks para generar Mocks de las clases que se depende y poder inyectar el comportamiento simulado en tiempo de ejecución.
 
-
+![](Images/Azure-PipeLine/unittest1.png)  ![](Images/Azure-PipeLine/unittest2.png)
 
 ### TDD
 
@@ -295,11 +295,6 @@ Con azure DevOps se establecen cuales deben ser las pruebas manuales a ejecutar.
 
 ![](Images/Azure-PipeLine/manualtests.png)
 
-* Pruebas unitarias (Visual Studio) 
-
-Así mismo se generaron pruebas unitarias que fueron el insumo prncipal para ejecutar el proyecto con la metodología **TDD**.
-
-![](Images/Azure-PipeLine/unittests.png)
 
 * Pruebas de aceptación
 
