@@ -306,12 +306,12 @@ En cada una de las pruebas se define caules son los pasos que se deben hacer y c
 
 Se genero adicionalmente el plan de pruebas en una herramienta como **POSTMAN** y finalmente se automatiza su ejecución con **NEWMAN** para así dar aceptación a cada funcionalidad.
 
-![](Images/Azure-PipeLine/postman.png)
+![](Images/UnitTest/postman.png)
 
 **Ejecución automática**
 
-![](Images/Azure-PipeLine/newman1.png)
-![](Images/Azure-PipeLine/newman2.png)
+![](Images/UnitTest/newman1.png)
+![](Images/UnitTest/newman2.png)
 
 #### Load Test
 
